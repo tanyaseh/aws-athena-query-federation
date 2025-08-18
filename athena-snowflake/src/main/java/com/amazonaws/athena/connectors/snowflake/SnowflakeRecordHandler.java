@@ -105,9 +105,8 @@ public class SnowflakeRecordHandler extends JdbcRecordHandler
     {
         final String secretName = getDatabaseConnectionConfig().getSecret();
         if (StringUtils.isNotBlank(secretName)) {
-            return new SnowflakeCredentialsProvider(secretName);
+            return new SnowflakeCredentialsProvider(secretName, getSecretsManager());
         }
-
         return null;
     }
 }
